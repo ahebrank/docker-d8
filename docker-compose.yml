@@ -1,0 +1,43 @@
+version: '2'
+
+services:
+  # PHP Web Server
+  web:
+    build: newcity-d8/.
+    image: newcity-d8
+    # Environment variables
+    ports:
+      # Host machine's port 8000 will map to Drupal's port 80
+      - "8000:80"
+    volumes:
+      # Drupal is in the web directory, but core is maintained in Docker persistent storage
+      # this means composer should be run on the container
+      - drupal_core:/app/web
+      - ./themes:/app/web/themes
+      - ./modules:/app/web/modules
+      - ./composer.json:/app/composer.json
+    links:
+      - database:database
+    command: php -S 0.0.0.0:80 -t /app/web
+    working_dir: /app
+    restart: always
+
+  # MySQL Server
+  database:
+    image: mariadb:10
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_USER: drupal
+      MYSQL_PASSWORD: drupal
+      MYSQL_DATABASE: drupal
+      MYSQL_ROOT_PASSWORD: ''
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    ports:
+      - "3306:3306"
+    restart: always
+
+volumes:
+  db_data:
+  drupal_core:
+  

@@ -1,0 +1,3 @@
+#!/bin/bash
+. projectvars
+docker exec -i -t $DRUPAL_CONTAINER vendor/drush/drush/drush --root=/app/web $@
