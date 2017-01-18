@@ -3,6 +3,7 @@ version: '2'
 services:
   # PHP Web Server
   web:
+    # custom build based on d8-fpm
     build: newcity-d8/.
     image: newcity-d8
     # Environment variables
@@ -13,9 +14,10 @@ services:
       # Drupal is in the web directory, but core is maintained in Docker persistent storage
       # this means composer should be run on the container
       - drupal_core:/app/web
-      - ./themes:/app/web/themes
-      - ./modules:/app/web/modules
+      - ./themes/custom:/app/web/themes/custom
+      - ./modules/custom:/app/web/modules/custom
       - ./composer.json:/app/composer.json
+      - ./sites/default/settings.php:/app/web/sites/default/settings.php
     links:
       - database:database
     command: php -S 0.0.0.0:80 -t /app/web

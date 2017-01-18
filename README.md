@@ -14,8 +14,7 @@ There are some utility functions for installing and updating core/modules.
 
 ## Management
 
-- To install modules: e.g., `./require drupal/paragraphs` (accepts composer versioning info as well)
-- To update: `./update`
+- To install modules: e.g., `./dcomposer require drupal/paragraphs` (accepts composer versioning info as well)
 - Drupal console: `./ddrupal`
 - Drush: `./ddrush`
 - Shell into Drupal container: `./d`

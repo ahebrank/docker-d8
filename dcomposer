@@ -1,0 +1,3 @@
+#!/bin/bash
+. projectvars
+docker exec -i -t $DRUPAL_CONTAINER /usr/local/bin/php /root/composer.phar $@
