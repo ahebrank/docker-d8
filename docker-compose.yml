@@ -17,7 +17,6 @@ services:
       - ./themes/custom:/app/web/themes/custom
       - ./modules/custom:/app/web/modules/custom
       - ./composer.json:/app/composer.json
-      - ./sites/default/settings.php:/app/web/sites/default/settings.php
     links:
       - database:database
     command: php -S 0.0.0.0:80 -t /app/web
