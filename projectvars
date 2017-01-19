@@ -1,1 +1,1 @@
-DRUPAL_CONTAINER=cyberrange_web_1
+DRUPAL_CONTAINER=$( pwd | xargs basename )_web_1

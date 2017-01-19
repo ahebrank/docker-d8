@@ -10,7 +10,6 @@ There are some utility functions for installing and updating core/modules.
 
 - clone/copy this to a new project: `composer create-project ahebrank/docker-d8 YOUR-PROJECT-DIR --stability dev`
 - run `docker-compose up --build` to spin up your container network
-- edit `projectvars` to insert the name of your Drupal container (should be `PROJECTDIR_web_1`)
 - browse to `http://localhost:8000` to set up your site.  The database and application files are kept in persistent storage containers
 
 ## Management
