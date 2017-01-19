@@ -1,9 +1,9 @@
 {
    "name": "ahebrank/docker-d8",
    "description": "D8 in Docker project skeleton",
-   "scripts": [
+   "scripts": {
       "post-create-project-cmd": [
           "php -r \"copy('https://raw.githubusercontent.com/drupal-composer/drupal-project/8.x/composer.json', 'composer.json');\""
       ]
-   ]
+   }
 }
