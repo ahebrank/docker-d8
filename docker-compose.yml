@@ -18,6 +18,7 @@ services:
       - ./modules/custom:/app/web/modules/custom
       - ./modules/contrib:/app/web/modules/contrib
       - ./libraries:/app/web/libraries
+      - ./utils:/app/utils
       - ./composer.json:/app/composer.json
     links:
       - database:database
