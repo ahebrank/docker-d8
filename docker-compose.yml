@@ -16,6 +16,8 @@ services:
       - drupal_core:/app/web
       - ./themes/custom:/app/web/themes/custom
       - ./modules/custom:/app/web/modules/custom
+      - ./modules/contrib:/app/web/modules/contrib
+      - ./libraries:/app/web/libraries
       - ./composer.json:/app/composer.json
     links:
       - database:database
