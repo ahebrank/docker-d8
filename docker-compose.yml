@@ -9,7 +9,7 @@ services:
     # Environment variables
     ports:
       # Host machine's port 8000 will map to Drupal's port 80
-      - "8000:80"
+      - "9000:80"
     volumes:
       # Drupal is in the web directory, but core is maintained in Docker persistent storage
       # this means composer should be run on the container
