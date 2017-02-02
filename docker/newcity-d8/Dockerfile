@@ -13,3 +13,5 @@ RUN cd /root && \
 # install D8
 RUN cd / && \
   php /root/composer.phar create-project drupal-composer/drupal-project:8.x-dev app --stability dev --no-interaction
+
+RUN chown -R www-data /app

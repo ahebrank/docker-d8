@@ -1,15 +1,22 @@
 version: '2'
 
 services:
-  # PHP Web Server
   web:
-    # custom build based on d8-fpm
-    build: newcity-d8/.
-    image: newcity-d8
-    # Environment variables
+    image: nginx:alpine
     ports:
-      # Host machine's port 8000 will map to Drupal's port 80
       - "9000:80"
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./docker/nginx/site.conf:/etc/nginx/conf.d/default.conf:ro
+      - drupal_core:/app/web:ro
+    links:
+      - php
+  
+  # PHP
+  php:
+    # custom build based on d8-fpm
+    build: docker/newcity-d8/.
+    image: newcity-d8
     volumes:
       # Drupal is in the web directory, but core is maintained in Docker persistent storage
       # this means composer should be run on the container
@@ -21,8 +28,7 @@ services:
       - ./utils:/app/utils
       - ./composer.json:/app/composer.json
     links:
-      - database:database
-    command: php -S 0.0.0.0:80 -t /app/web
+      - database
     working_dir: /app
     restart: always
 
